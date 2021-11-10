@@ -5,7 +5,7 @@ metadata:
   namespace: default
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:dev-*
+    filter.fluxcd.io/chart-image: glob:echo*
 spec:
   releaseName: echo-dev
   chart:
@@ -15,7 +15,7 @@ spec:
   values:
     image:
       repository: weirdocker/echo
-      tag: dev-hdtwcel9
+      tag: echo5
     replicaCount: 1
     hpa:
       enabled: false
