@@ -1,10 +1,12 @@
 echo:
-  image: "weirdocker/echo:echo5"
   configmap: "confmap"
   secret: "secret"
   serv: "echoserv"
   containerPort: 3000
 name: "echo"
+image:
+  repository: "weirdocker/echo"
+  tag: "echo5"
 
 
 
