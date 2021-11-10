@@ -1,20 +1,20 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: podinfo-dev
-  namespace: dev
+  name: echo-dev
+  namespace: default
   annotations:
     fluxcd.io/automated: "true"
     filter.fluxcd.io/chart-image: glob:dev-*
 spec:
-  releaseName: podinfo-dev
+  releaseName: echo-dev
   chart:
     git: git@github.com:imeilon/helm-operator-get-started
-    path: charts/podinfo
-    ref: master
+    path: charts/echo
+    ref: main
   values:
     image:
-      repository: weirdocker/podinfo
+      repository: weirdocker/echo
       tag: dev-hdtwcel9
     replicaCount: 1
     hpa:
