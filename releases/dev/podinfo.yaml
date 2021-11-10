@@ -5,7 +5,7 @@ metadata:
   namespace: default
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:echo*
+    filter.fluxcd.io/chart-image: semver:echo*
 spec:
   releaseName: echo-dev
   chart:
