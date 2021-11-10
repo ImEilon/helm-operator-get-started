@@ -1,0 +1,11 @@
+echo:
+  image: "europe-central2-docker.pkg.dev/echov1/echov2/echov2@sha256:66bc4aaa2a59473868ba823f12f608b34124b51cce4bdd4ccda5c6b057c135e5"
+  configmap: "confmap"
+  secret: "secret"
+  serv: "echoserv"
+  containerPort: 3000
+name: "echo"
+
+
+
+

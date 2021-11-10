@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.name }}"
+  labels:
+    app: "{{ .Values.name }}"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "{{ .Values.name }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ .Values.name }}"
+    spec:
+      containers:
+        - name: "{{ .Values.name }}"
+          image: {{ .Values.echo.image }}
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          ports:
+            - containerPort: {{ .Values.echo.containerPort }}
+          envFrom:
+          - configMapRef:
+              name: {{ .Values.echo.configmap }}
+          env:
+          - name: MONGODBURL
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.echo.secret }}
+                key: MONGODBURL                       
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.echo.serv }}
+spec:
+  ports:
+  - port: 80
+    targetPort: {{ .Values.echo.containerPort }}
+    protocol: TCP
+    name: http
+  selector:
+    app: "{{ .Values.name }}"
+
+

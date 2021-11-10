@@ -1,0 +1,10 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: letsencryptprod
+spec:
+  secretName: echo-production-certificate
+  issuerRef:
+    name: letsencrypt-prod
+  emailAddresses:
+  - eilon696@gmail.com

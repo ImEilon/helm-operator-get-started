@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mongopurge
+spec:
+  schedule: "0 0 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mongopurge
+            image: mongo
+            imagePullPolicy: IfNotPresent
+            args: ["/bin/bash", "-c", 'mongo eilon --eval "db.echos.drop()" --host mongo-mongodb-headless -u eilon -p eilon']
+          restartPolicy: Never
