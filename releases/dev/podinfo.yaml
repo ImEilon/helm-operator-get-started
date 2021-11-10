@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repository: weirdocker/echo
-      tag: 1.0.0
+      tag: 1.0.1
     replicaCount: 1
     hpa:
       enabled: false
