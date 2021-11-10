@@ -11,7 +11,7 @@ spec:
   chart:
     git: git@github.com:imeilon/helm-operator-get-started
     path: charts/echo
-    ref: main
+    ref: master
   values:
     image:
       repository: weirdocker/echo
